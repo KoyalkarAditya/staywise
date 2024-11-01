@@ -1,11 +1,32 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Layout from "./layouts/Layout";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Layout></Layout>} />
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <div>Home Page</div>
+            </Layout>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <Layout>
+              <div>Search Page</div>
+            </Layout>
+          }
+        />
+        <Route path="*" element={<Navigate to={"/"} />} />
       </Routes>
     </Router>
   );

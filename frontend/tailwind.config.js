@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         lexend: ["Lexend Deca", "sans-serif"],
       },
+      container: {
+        padding: "10rem",
+      },
     },
   },
   plugins: [],

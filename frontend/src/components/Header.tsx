@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <div className="bg-blue-800 py-6 font-lexend">
-      <div className="mx-5 md:mx-12 flex justify-between">
+    <div className="bg-blue-800 py-5">
+      <div className="mx-7 md:mx-16 flex justify-between">
         <span className="text-3xl text-white font-bold tracking-tight">
           <Link to={"/"}>StayWise.com</Link>
         </span>
