@@ -41,7 +41,6 @@ const SignIn = () => {
   return (
     <form onSubmit={onSubmit} className="container p-5 flex flex-col gap-5">
       <h2 className="text-3xl font-bold">Sign In</h2>
-
       <label className="text-gray-800 text-sm font-bold flex-1">
         Email
         <input
@@ -81,6 +80,17 @@ const SignIn = () => {
         >
           Login
         </button>
+      </span>
+      <span>
+        Not registered?{" "}
+        <span
+          onClick={() => {
+            navigate("/register");
+          }}
+          className="underline cursor-pointer"
+        >
+          Create an account here
+        </span>
       </span>
     </form>
   );

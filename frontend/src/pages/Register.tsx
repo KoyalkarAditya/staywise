@@ -133,6 +133,17 @@ const Register = () => {
           Create Account
         </button>
       </span>
+      <span>
+        Already have an account{" "}
+        <span
+          onClick={() => {
+            navigate("/sign-in");
+          }}
+          className="underline cursor-pointer"
+        >
+          Sign in here
+        </span>
+      </span>
     </form>
   );
 };
