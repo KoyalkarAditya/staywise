@@ -4,6 +4,9 @@ import "dotenv/config";
 import { Request, Response } from "express";
 import mongoose from "mongoose";
 
+import userRoutes from "./routes/user";
+import authRoutes from "./routes/auth";
+
 mongoose.connect(process.env.MONGODB_URL!).then(() => {
   console.log("MongoDB connected");
 });
@@ -21,6 +24,9 @@ app.get("/api/test", async (req: Request, res: Response) => {
     message: "Healthy server",
   });
 });
+
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 app.listen(3000, () => {
   console.log("server started at 3000");
