@@ -43,3 +43,13 @@ export const signIn = async (formData: SignInData) => {
     throw new Error(responseBody.message);
   }
 };
+
+export const signOut = async () => {
+  const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
+    method: "POST",
+    credentials: "include",
+  });
+  if (!response.ok) {
+    throw new Error("Error during sign out");
+  }
+};
