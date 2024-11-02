@@ -4,6 +4,7 @@ import "dotenv/config";
 import { Request, Response } from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import path from "path";
 
 import userRoutes from "./routes/user";
 import authRoutes from "./routes/auth";
@@ -26,6 +27,9 @@ app.use(
     extended: true,
   })
 );
+
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+
 app.get("/api/test", async (req: Request, res: Response) => {
   res.status(200).json({
     message: "Healthy server",
