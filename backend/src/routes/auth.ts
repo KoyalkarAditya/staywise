@@ -3,6 +3,7 @@ import { check, validationResult } from "express-validator";
 import User from "../models/user";
 import bycrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import verifyToken from "../middleware/auth";
 
 const router = express.Router();
 
@@ -42,10 +43,10 @@ router.post(
       const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, {
         expiresIn: "1d",
       });
-      res.cookie("auth-token", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        maxAge: 86400000,
+      res.cookie("auth_token", token, {
+        httpOnly: true, // can't be able to parse the cookie in the client side
+        secure: process.env.NODE_ENV === "production", //allows only https production
+        maxAge: 86400000, //expires after a day as the cookie age is 1d
       });
       res.status(200).json({ userId: user.id });
     } catch (e) {
@@ -56,5 +57,9 @@ router.post(
     }
   }
 );
+
+router.get("/validate-token", verifyToken, (req: Request, res: Response) => {
+  res.status(200).send({ userId: req.userId });
+});
 
 export default router;
