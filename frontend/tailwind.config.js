@@ -7,7 +7,9 @@ export default {
         lexend: ["Lexend Deca", "sans-serif"],
       },
       container: {
-        padding: "10rem",
+        padding: {
+          md: "10rem",
+        },
       },
     },
   },

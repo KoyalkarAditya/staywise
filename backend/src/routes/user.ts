@@ -41,7 +41,9 @@ router.post(
         secure: process.env.NODE_ENV === "production",
         maxAge: 86400000,
       });
-      res.sendStatus(200);
+      res.status(200).json({
+        message: "user registered successfully!",
+      });
     } catch (e) {
       console.log(e);
       res.status(500).send({ message: "something went wrong" });
