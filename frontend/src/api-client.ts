@@ -1,4 +1,3 @@
-import { HotelFormData } from "./forms/ManageHotelForm/ManageHotelForms";
 import { RegisterFormData } from "./pages/Register";
 import { SignInData } from "./pages/Signin";
 
