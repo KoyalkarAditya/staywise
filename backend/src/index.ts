@@ -5,9 +5,17 @@ import { Request, Response } from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import path from "path";
+import { v2 as cloudinary } from "cloudinary";
 
 import userRoutes from "./routes/user";
 import authRoutes from "./routes/auth";
+import myHotelsRoutes from "./routes/my-hotels";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 mongoose.connect(process.env.MONGODB_URL!).then(() => {
   console.log("MongoDB connected");
@@ -38,6 +46,7 @@ app.get("/api/test", async (req: Request, res: Response) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/my-hotels", myHotelsRoutes);
 
 app.listen(3000, () => {
   console.log("server started at 3000");
