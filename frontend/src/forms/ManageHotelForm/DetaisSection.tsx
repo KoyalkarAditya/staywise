@@ -84,7 +84,7 @@ const DetailsSection = () => {
         <label className="text-gray-800 text-sm font-bold flex-1">
           Star Rating
           <select
-            {...register("startRating", {
+            {...register("starRating", {
               required: "This field is required",
             })}
             className="w-full mt-2 rounded border-2 p-2 text-gray-800"
@@ -98,9 +98,9 @@ const DetailsSection = () => {
               </option>
             ))}
           </select>
-          {errors.startRating && (
+          {errors.starRating && (
             <span className="text-sm text-red-600 font-normal">
-              {errors.startRating.message}
+              {errors.starRating.message}
             </span>
           )}
         </label>
