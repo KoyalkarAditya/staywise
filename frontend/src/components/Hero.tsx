@@ -1,6 +1,6 @@
 export const Hero = () => {
   return (
-    <div className="bg-blue-800 py-3 border-t border-zinc-400">
+    <div className="bg-blue-800 py-2 border-t border-zinc-400">
       <div className="mx-6 md:mx-16 flex flex-col">
         <h1 className="text-xl md:text-2xl text-white font-semibold ">
           Find your next stay

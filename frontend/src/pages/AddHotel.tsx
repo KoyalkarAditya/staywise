@@ -1,5 +1,4 @@
 import { useMutation } from "react-query";
-import Header from "../components/Header";
 import { useAppContext } from "../contexts/AppContext";
 import ManageHotelForm from "../forms/ManageHotelForm/ManageHotelForms";
 import * as apiClient from "../api-client";
@@ -26,7 +25,6 @@ const AddHotel = () => {
 
   return (
     <>
-      <Header />
       <ManageHotelForm onSave={handleSave} isLoading={isLoading} />
     </>
   );
