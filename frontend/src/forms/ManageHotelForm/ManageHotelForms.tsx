@@ -4,6 +4,8 @@ import TypeSection from "./TypeSection";
 import FacilitiesSection from "./FacilitiesSection";
 import GuestsSection from "./GuestsSection";
 import ImagesSection from "./ImagesSection";
+import { HotelType } from "../../../../backend/src/shared/types";
+import { useEffect } from "react";
 
 export type HotelFormData = {
   name: string;
@@ -17,17 +19,25 @@ export type HotelFormData = {
   pricePerNight: number;
   starRating: number;
   imageUrls: string[];
+  imageFiles: FileList;
 };
 type Props = {
+  hotel?: HotelType;
   onSave: (data: FormData) => void;
   isLoading: boolean;
 };
 
-const ManageHotelForm = ({ onSave, isLoading }: Props) => {
+const ManageHotelForm = ({ onSave, isLoading, hotel }: Props) => {
   const formMethods = useForm<HotelFormData>();
-  const { handleSubmit } = formMethods;
+  const { handleSubmit, reset } = formMethods;
+  useEffect(() => {
+    reset(hotel);
+  }, [hotel, reset]);
   const onSubmit = handleSubmit((data) => {
     const formData = new FormData();
+    if (hotel) {
+      formData.append("hotelId", hotel._id);
+    }
     formData.append("name", data.name);
     formData.append("city", data.city);
     formData.append("country", data.country);
@@ -40,7 +50,12 @@ const ManageHotelForm = ({ onSave, isLoading }: Props) => {
     data.facilities.forEach((facility, index) => {
       formData.append(`facilities[${index}]`, facility);
     });
-    Array.from(data.imageUrls).forEach((imageFile) => {
+    if (data.imageUrls) {
+      data.imageUrls.forEach((url, index) => {
+        formData.append(`imageUrls[${index}]`, url);
+      });
+    }
+    Array.from(data.imageFiles).forEach((imageFile) => {
       formData.append(`imageFiles`, imageFile); // working with binary files ,so no need to specify array multer will handle
     });
     onSave(formData);
