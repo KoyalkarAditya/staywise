@@ -50,7 +50,7 @@ const ManageHotelForm = ({ onSave, isLoading }: Props) => {
     <FormProvider {...formMethods}>
       <form
         onSubmit={onSubmit}
-        className="container py-5 px-[2rem] md:px-[20rem] flex flex-col gap-5"
+        className="container py-5 px-[2rem] flex flex-col gap-5"
       >
         <DetailsSection />
         <TypeSection />
