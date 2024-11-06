@@ -26,7 +26,7 @@ const EditHotel = () => {
       onSuccess: () => {
         queryClient.invalidateQueries("fetchHotelById");
         showToast({
-          message: "Saved!",
+          message: "Hotel Saved!",
           type: "SUCCESS",
         });
       },

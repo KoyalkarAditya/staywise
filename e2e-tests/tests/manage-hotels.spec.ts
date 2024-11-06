@@ -30,7 +30,7 @@ test("should allow user to add a hotel", async ({ page }) => {
   await page.locator('[name="adultCount"]').fill("2");
   await page.locator('[name="childCount"]').fill("4");
 
-  await page.setInputFiles('[name="imageUrls"]', [
+  await page.setInputFiles('[name="imageFiles"]', [
     path.join(__dirname, "files", "wallpaperCar.jpg"),
   ]);
 
@@ -57,4 +57,25 @@ test("should display hotels", async ({ page }) => {
       name: "Add Hotel",
     })
   ).toBeVisible();
+});
+
+test("should edit hotel", async ({ page }) => {
+  await page.goto(`${UI_URL}/my-hotels`);
+
+  await page
+    .getByRole("link", {
+      name: "View Details",
+    })
+    .first()
+    .click();
+
+  await page.waitForSelector('[name="name"]', {
+    state: "attached",
+  });
+  await expect(page.locator('[name="name"]')).toHaveValue("Test Hotel");
+  await page.locator('[name="name"]').fill("Test Hotel Updated");
+
+  await page.getByRole("button", { name: "Save" }).click();
+
+  await expect(page.getByText("Hotel Saved!")).toBeVisible();
 });
