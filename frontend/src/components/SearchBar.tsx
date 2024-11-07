@@ -12,7 +12,6 @@ const SearchBar = () => {
   const [checkOut, setCheckOut] = useState<Date>(search.checkOut);
   const [adultCount, setAdultCount] = useState<number>(search.adultCount);
   const [childCount, setChildCount] = useState<number>(search.childCount);
-  const [hotelId, setHotelId] = useState<string>(search.hotelId);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -22,8 +21,7 @@ const SearchBar = () => {
       checkIn,
       checkOut,
       adultCount,
-      childCount,
-      hotelId
+      childCount
     );
 
     navigate("/search");
@@ -40,7 +38,7 @@ const SearchBar = () => {
         <MdTravelExplore size={25} className="mr-2" />
         <input
           type="text"
-          placeholder="where are u going"
+          placeholder="where are u going?"
           className="text-md  w-full focus:outline-none"
           onChange={(e) => {
             setDestination(e.target.value);

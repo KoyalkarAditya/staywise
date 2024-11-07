@@ -72,7 +72,7 @@ test("should edit hotel", async ({ page }) => {
   await page.waitForSelector('[name="name"]', {
     state: "attached",
   });
-  await expect(page.locator('[name="name"]')).toHaveValue("Test Hotel");
+  await expect(page.locator('[name="name"]')).toHaveValue("Test Hotel Updated");
   await page.locator('[name="name"]').fill("Test Hotel Updated");
 
   await page.getByRole("button", { name: "Save" }).click();
