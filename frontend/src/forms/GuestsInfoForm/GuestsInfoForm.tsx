@@ -49,7 +49,8 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
       data.checkIn,
       data.checkOut,
       data.adultCount,
-      data.childCount
+      data.childCount,
+      hotelId
     );
     navigate("/sign-in", {
       state: { from: location },
@@ -61,7 +62,8 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
       data.checkIn,
       data.checkOut,
       data.adultCount,
-      data.childCount
+      data.childCount,
+      hotelId
     );
     navigate(`/hotel/${hotelId}/booking`);
   };
