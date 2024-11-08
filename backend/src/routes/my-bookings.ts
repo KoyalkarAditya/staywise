@@ -8,7 +8,7 @@ router.get("/", verifyToken, async (req: Request, res: Response) => {
   try {
     const hotels = await Hotel.find({
       "bookings.userId": req.userId,
-    });
+    }).exec();
     const results = hotels.map((hotel) => {
       const userBookings = hotel.bookings.filter(
         (booking) => booking.userId == req.userId

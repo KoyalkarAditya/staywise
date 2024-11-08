@@ -30,7 +30,7 @@ const MyBookings = () => {
               </div>
             </div>
             {hotel.bookings.map((booking) => (
-              <div>
+              <div className="bg-blue-200 p-2 rounded-md">
                 <div>
                   <span className="font-bold mr-2">Dates: </span>
                   <span>
